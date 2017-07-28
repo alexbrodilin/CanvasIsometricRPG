@@ -1,17 +1,18 @@
-﻿<html>
+<!DOCTYPE html>
+<html>
 <head>
     <title>Canvas fake top down perspective view</title> 
 </head>
 
 <body>
-  <canvas width="800" height="600"></canvas>
+  <canvas width="800" height="600" id="display"></canvas>
 
 <script>
   var image = new Image();
   image.onload = function() {
     var width = image.width,
         height = image.height;
-    var context = $("canvas")[0].getContext("2d");
+    var context = document.getElementById("display").getContext("2d");
     for (var i = 0; i <= width / 2; ++i) {
       context.setTransform(0.9, 0,
                            -1.0 * i / width, 0.9, -100, -150);
