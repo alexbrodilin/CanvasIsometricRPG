@@ -1,0 +1,31 @@
+﻿<html>
+<head>
+    <title>Canvas fake top down perspective view</title> 
+</head>
+
+<body>
+  <canvas width="800" height="600"></canvas>
+
+<script>
+  var image = new Image();
+  image.onload = function() {
+    var width = image.width,
+        height = image.height;
+    var context = $("canvas")[0].getContext("2d");
+    for (var i = 0; i <= width / 2; ++i) {
+      context.setTransform(0.9, 0,
+                           -1.0 * i / width, 0.9, -100, -150);
+      context.drawImage(image,
+                        width / 2 - i, 0, 2, height,
+                        width / 2 - i, 0, 2, height);
+      context.setTransform(0.9, 0,
+                           1.0 * i / width, 0.9, -100, -150);
+      context.drawImage(image,
+                        width / 2 + i, 0, 2, height,
+                        width / 2 + i, 0, 2, height);
+
+    }
+  };
+  image.src = "http://www.gmtgames.com/TheLast100/L100-SampleMap-1.jpg";
+</script>
+</body></html>
